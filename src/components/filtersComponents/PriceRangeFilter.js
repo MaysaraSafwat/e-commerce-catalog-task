@@ -4,7 +4,7 @@ import React from "react";
 function valuetext(price) {
     return `${price}$`;
   }
-export default function PriceRange() {
+export default function PriceRangeFilter() {
     const [price, setPrice] = React.useState([20, 37]);
   
     const handleChange = (event, newPrice) => {

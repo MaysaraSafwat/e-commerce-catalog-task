@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardActionArea, CardContent, CardMedia , Typography} from "@material-ui/core"
-import RatingComponent from "./Rating";
+import RatingComponent from "../Rating";
 
 export default function Product (){
     return (

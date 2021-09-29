@@ -1,6 +1,6 @@
 import React from "react";
-import PriceRange from "./PricrRange";
-import RatingComponent from "./Rating"
+import PriceRange from "./PriceRangeFilter";
+import RatingComponent from "../Rating"
 import ColorFilter from "./ColorFilter";
 
 export default function FiltersSideBar(){

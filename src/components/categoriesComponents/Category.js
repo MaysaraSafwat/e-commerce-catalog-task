@@ -1,7 +1,5 @@
-//import { ImageListItem, Paper } from "@material-ui/core";
 import React from "react";
-//import Card from "@material-ui/core/Card";
-//import { CardActionArea, CardContent, CardMedia, Typography } from "@material-ui/core";
+
 
 
 export default function Category (){

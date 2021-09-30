@@ -30,8 +30,10 @@ code {
 }
 .categories {
   padding-right: 10%;
-  padding-left: 10%;
+  padding-left: 23%;
   margin-bottom: 1.5;
+  text-align: center;
+  padding-top: 20px;
 }
 .category {
   padding: 20px 0 20px 0;
@@ -39,10 +41,11 @@ code {
 }
 .category > img {
   margin-top: 15px;
-  width: 130px;
-  height: 130px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   border-radius: 20%;
+  cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 

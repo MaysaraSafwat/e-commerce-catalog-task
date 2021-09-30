@@ -3,8 +3,11 @@ import PriceRange from "./PriceRangeFilter";
 import RatingComponent from "../Rating"
 import ColorFilter from "./ColorFilter";
 
+
+
 export default function FiltersSideBar(){
-    return (
+
+     return (
         <div className="filters-sidebar">
             <div className="filter-sideItem">
                 <PriceRange />
@@ -18,6 +21,7 @@ export default function FiltersSideBar(){
               < RatingComponent rating={3}/>
               < RatingComponent rating={2}/>
               < RatingComponent rating={2}/>
+
                 
             </div>
 

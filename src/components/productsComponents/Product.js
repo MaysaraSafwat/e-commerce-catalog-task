@@ -14,7 +14,7 @@ export default function Product ({product}){
           alt="green iguana"
           />
           <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h6" component="div">
             {product.name}
           </Typography>
           <RatingComponent rating={product.rating}/>

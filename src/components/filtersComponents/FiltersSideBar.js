@@ -5,26 +5,39 @@ import ColorFilter from "./ColorFilter";
 
 
 
-export default function FiltersSideBar(){
+export default function FiltersSideBar({onPriceRangeChange , onColorFilterChange, products,onRatingSelect})
+{
+  
+const stars = [];
+(
+    (arr)=>{
+        for(var i=5 ; i>0; i--){
+            stars.push(i)
+        }
+        return stars
+    }
+)(); 
 
+  
+    
      return (
-        <div className="filters-sidebar">
+        <fieldset className="filters-sidebar">
+            <legend>Filters</legend>
             <div className="filter-sideItem">
-                <PriceRange />
+                <PriceRange 
+                onPriceRangeChange={onPriceRangeChange}
+                />
             </div>
             <div className="filter-sideItem">
-                <ColorFilter/>
+                <ColorFilter onColorFilterChange={onColorFilterChange} products={products}/>
             </div>
             <div className="filter-sideItem">
-              < RatingComponent rating={5}/>
-              < RatingComponent rating={4}/>
-              < RatingComponent rating={3}/>
-              < RatingComponent rating={2}/>
-              < RatingComponent rating={2}/>
+                {stars.map( i =>  
+                  <RatingComponent rating={i} onRatingSelect={onRatingSelect}/>
+               )}
+            
+            </div>   
 
-                
-            </div>
-
-        </div>
+        </fieldset>
     )
 }

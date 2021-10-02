@@ -9,10 +9,10 @@ export default function Categories ({categories, onCategoryClick}){
  
     return (
     <div className="categories">
-        <div><h4>Choose one of the categories below</h4></div>
-        <Grid container>
+        <div><div className="categories-heading">Choose one of Our the Categories Below</div></div>
+        <Grid container className="grid-container">
         
-        {categories.map(category => 
+       {categories &&  categories.map(category => 
         <Grid item xs={6} md={2} key={category.id}>
                <Category category={category} onCategoryClick={onCategoryClick}/>
          </Grid>

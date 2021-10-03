@@ -2,6 +2,7 @@ import { Checkbox, FormControl, InputLabel,
          ListItemIcon, ListItemText, makeStyles, MenuItem,
         Select } from '@material-ui/core';
 import React from 'react';
+import Button from './Button';
 
 
 const ITEM_HEIGHT = 48;
@@ -17,7 +18,7 @@ const ITEM_PADDING_TOP = 8;
 
 
 
-export default function ColorFilter ({onColorFilterChange, products}){
+export default function ColorFilter ({onColorFilterChange, products , handleClearColorFilter}){
 
   const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -55,10 +56,12 @@ export default function ColorFilter ({onColorFilterChange, products}){
       return;
      }
     setSelected(value);
-    onColorFilterChange(selected);
+    onColorFilterChange(value);
 
   };
-
+   const handleClick = ()=>{
+    handleClearColorFilter()
+   }
   return (
     <FormControl className={classes.formControl}>
       <InputLabel id="mutiple-select-label">Select Color</InputLabel>
@@ -99,6 +102,9 @@ export default function ColorFilter ({onColorFilterChange, products}){
           </MenuItem>
         ))}
       </Select>
+      
+      <Button onClick={handleClick}/>
+      
     </FormControl>
   );
 }

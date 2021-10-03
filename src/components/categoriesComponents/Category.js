@@ -9,11 +9,13 @@ export default function Category ({category, onCategoryClick}){
         <div className="category" onClick={()=>{
             onCategoryClick(category.id)
         }}>
-          
+            
+          <figure>
             <img  src={category.image}
             alt="name"
             />
-            
+         </figure>  
+         
             <p>{category.name}</p>
 
     </div>

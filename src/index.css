@@ -28,6 +28,16 @@ body {
   letter-spacing: 2px;
   font-weight: 600;
 }
+.clear {
+  padding: 10px 17px;
+  background-color: var(--primary);
+  color: white;
+  border: 1px solid var(--primary);
+  letter-spacing: 1px;
+  margin-top: 10px;
+  font-size: 0.9em;
+  border-radius: 10px;
+}
 /*Categories*/
 
 .categories {
@@ -37,20 +47,39 @@ body {
   color: var(--primary);
 }
 .grid-container {
-  margin-left: 9%;
-  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.grid-item {
+  margin: 0.5em 1em;
 }
 .categories .categories-heading {
   font-weight: 500;
   font-size: 1.2em;
   letter-spacing: 1.5px;
 }
+
 .category {
   padding: 20px 0px 20px 0px;
   text-align: center;
 }
 
-.category > img {
+.category:hover p {
+  font-size: 1.2em;
+  transition: all 0.1s ease-in-out;
+}
+figure {
+  width: 200px;
+  height: 120px;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  overflow: hidden;
+  object-fit: cover;
+  cursor: pointer;
+}
+.category figure img {
   margin-top: 15px;
   width: 200px;
   height: 120px;
@@ -59,6 +88,28 @@ body {
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
+.category figure:hover img {
+  opacity: 1;
+  -webkit-animation: flash 1.5s;
+  animation: flash 1.5s;
+}
+@-webkit-keyframes flash {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes flash {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 /*Home*/
 
 .home {
@@ -115,4 +166,10 @@ fieldset legend {
 .product {
   padding: 20px;
   text-align: center;
+}
+.product p {
+  color: var(--primary);
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 1em;
 }

@@ -1,5 +1,6 @@
 import { Box, Slider } from "@material-ui/core";
 import React from "react";
+import Button from "./Button";
 
 function valuetext(price) {
     return `${price}$`;
@@ -12,41 +13,41 @@ function valuetext(price) {
       scaledValue: 100
     },
     {
-      value: 25,
+      value: 10,
       scaledValue: 200
     },
     {
-      value: 50,
+      value: 20,
       scaledValue: 300
     },
     {
-      value: 75,
+      value: 30,
       scaledValue: 400
     },
     {
-      value: 100,
+      value:40,
       scaledValue: 500
     },
     {
-      value: 125,
+      value: 50,
       scaledValue: 600
     },
     {
-      value: 150,
+      value: 60,
       scaledValue: 700
     },
     {
-      value: 175,
+      value: 70,
       scaledValue: 800
      
     },
     {
-      value: 200,
+      value: 80,
       scaledValue: 900
      
     },
     {
-      value: 225,
+      value: 90,
       scaledValue: 1000
      
     }
@@ -59,28 +60,32 @@ function valuetext(price) {
     if (value === undefined) {
       return undefined;
     }
-    const previousMarkIndex = Math.floor(value / 25);
+    const previousMarkIndex = Math.floor(value / 10);
     const previousMark = prices[previousMarkIndex];
-    const remainder = value % 25;
+    const remainder = value % 10;
     if (remainder === 0) {
       return previousMark.scaledValue;
     }
     const nextMark = prices[previousMarkIndex + 1];
-    const increment = (nextMark.scaledValue - previousMark.scaledValue) / 25;
+    const increment = (nextMark.scaledValue - previousMark.scaledValue) /10;
     return remainder * increment + previousMark.scaledValue;
   };
 
 
 
 
-export default function PriceRangeFilter({onPriceRangeChange}) {
-    const [price, setPrice] = React.useState([1, 25]);
+export default function PriceRangeFilter({onPriceRangeChange,onClearFilter }) {
+    const [price, setPrice] = React.useState([1, 50]);
   
     const handleChange = (event, newPrice) => {
       setPrice(newPrice);
       onPriceRangeChange(price);
       
     };
+    const handleClick = ()=>{
+      let price = "price"
+      onClearFilter(price)
+    }
     
     return (
       <Box sx={{ width: 200 }}>
@@ -101,6 +106,7 @@ export default function PriceRangeFilter({onPriceRangeChange}) {
           valueLabelDisplay="auto"
           getAriaValueText={valuetext}
         />
-      </Box>
+          <Button onClick={handleClick}/>
+        </Box>
     );
   }

@@ -18,7 +18,7 @@ export default function Product ({product}){
             {product.name}
           </Typography>
           <RatingComponent rating={product.rating}/>
-          <p>Price: {product.price}$</p>
+          <p>Price: ${product.price}</p>
            </CardContent>
          </CardActionArea>
         </Card>

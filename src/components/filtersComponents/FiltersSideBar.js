@@ -1,41 +1,30 @@
 import React from "react";
 import PriceRange from "./PriceRangeFilter";
-import RatingComponent from "../Rating"
 import ColorFilter from "./ColorFilter";
+import RatingFilter from "./RatingFilter";
 
 
 
-export default function FiltersSideBar({onPriceRangeChange , onColorFilterChange, products,onRatingSelect})
+export default function FiltersSideBar({onPriceRangeChange , onColorFilterChange,
+     products,onRatingSelect, onClearFilter,
+     handleClearColorFilter, handleClearRatingFilter })
 {
   
-const stars = [];
-(
-    (arr)=>{
-        for(var i=5 ; i>0; i--){
-            stars.push(i)
-        }
-        return stars
-    }
-)(); 
 
-  
-    
      return (
         <fieldset className="filters-sidebar">
             <legend>Filters</legend>
             <div className="filter-sideItem">
                 <PriceRange 
                 onPriceRangeChange={onPriceRangeChange}
+                onClearFilter ={onClearFilter }
                 />
             </div>
             <div className="filter-sideItem">
-                <ColorFilter onColorFilterChange={onColorFilterChange} products={products}/>
+                <ColorFilter onColorFilterChange={onColorFilterChange} products={products} handleClearColorFilter={handleClearColorFilter}/>
             </div>
             <div className="filter-sideItem">
-                {stars.map( i =>  
-                  <RatingComponent rating={i} onRatingSelect={onRatingSelect}/>
-               )}
-            
+            <RatingFilter start={1} end={5} onChange={onRatingSelect} handleClearRatingFilter={handleClearRatingFilter} />
             </div>   
 
         </fieldset>

@@ -4,65 +4,96 @@ import { Divider } from "@material-ui/core";
 import Categories from "../components/categoriesComponents/Categories";
 import Products from "../components/productsComponents/Products"
 import FiltersSideBar from "../components/filtersComponents/FiltersSideBar";
-import { fetchData} from "../services/api";
+import { fetchCategoriesData, fetchData} from "../services/api";
 
 
 export default function Home (){
     const [categories, setCategories] = useState([]);
-    const [selectedCategory , setSelectedCategory ] = useState('');
-    const [selectedPriceRange , setSelectedPriceRange] = useState(null);
-    const [selectedColor , setSelectedColor] = useState(null);
-    const [selectedRating, setSelectedRating] = useState(null);
     const [products, setProducts] = useState([]);
-
+    const [appliedFilter, setAppliedFilter] = useState({});
 
 
     useEffect(()=>{
      (async () => {
-        const res = await fetchData("category");
+        const res = await fetchCategoriesData("category");
         setCategories(res)
      })();
     },[]);
 
-   
-    const handleClick= async(id)=> {
-      setSelectedCategory(id);
-      console.log(id);
-      const res = await fetchData("product");
-      setProducts(res);
+    useEffect(() => { 
+      (async () => {
+        const filters = Object.values(appliedFilter).join("&");
+        const res = await fetchData(filters);
+        setProducts(res);
+      })();
+    }, [appliedFilter]);
 
-    }
+    const handleCategoryClick
+     = (id) => {
+      setAppliedFilter({
+        ...appliedFilter,
+        category: `categoryId=${id}`,
+      });
+    };
+
+    const handlePriceRangeChange = (arr) => {
+      setAppliedFilter({
+        ...appliedFilter,
+        price: `price_gte=${arr[0]}&price_lte${arr[1]}`,
+      });
+    };
     
-     const handleChange = (arr)=>{
-         setSelectedPriceRange(arr)
-         console.log(arr)
-     }
+    const handleColorChange = (arr) => {
+      if (arr.length) {
+        let colorsAsString = arr.map((color) => `color=${color}`);
+        setAppliedFilter({
+          ...appliedFilter,
+          color: colorsAsString.join("&"),
+        });
+      } else {
+        let newFilter = { ...appliedFilter };
+        delete newFilter.color;
+        setAppliedFilter(newFilter);
+      }
+    };
 
-     const handleColorChange = (arr) => {
-       setSelectedColor(arr)
-     }
-
-     const handleSelectedRating=(num)=>{
-       setSelectedRating(num)
-       console.log(selectedRating)
-     }
-     
-    return (
+    const handleSelectedRating = (num) => {
+      setAppliedFilter({
+        ...appliedFilter,
+        rating: `rating=${num}`,
+      });
+    };
+    const handleClearPriceFilter =()=>{
+      let newFilter = { ...appliedFilter };
+      delete newFilter.price
+     setAppliedFilter(newFilter);
+    }
+    const handleClearColorFilter =()=>{
+      let newFilter = { ...appliedFilter };
+      delete newFilter.color
+      setAppliedFilter(newFilter);
+    }
+    const handleClearRatingFilter =()=>{
+      let newFilter = { ...appliedFilter };
+      delete newFilter.rating
+      setAppliedFilter(newFilter);
+    }
+  
+return (
         <div>
-            <Categories categories={categories} onCategoryClick={handleClick}/>
+            <Categories categories={categories} onCategoryClick={handleCategoryClick}/>
             <Divider/>
             <div className="home">
                 <FiltersSideBar
                 products={products}
-                onPriceRangeChange={handleChange}
+                onPriceRangeChange={handlePriceRangeChange}
                 onColorFilterChange={handleColorChange}
                 onRatingSelect={handleSelectedRating}
+                onClearFilter={handleClearPriceFilter }
+                handleClearColorFilter={handleClearColorFilter}
+                handleClearRatingFilter={handleClearRatingFilter}
                 />
                 <Products 
-                selectedPriceRange={selectedPriceRange} 
-                selectedCategory={selectedCategory}
-                selectedColor={selectedColor}
-                selectedRating={selectedRating}
                 products={products}/>
             </div>
         </div>

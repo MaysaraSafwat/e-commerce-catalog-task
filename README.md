@@ -19,11 +19,9 @@ For the state management I used react Hooks, I didn't find a need to use Redux o
 
 Also for the styling side of things I used a Material-UI and Vanilla CSS combo which made me achieve a polished, responsive and simple UI very easily.
 
-In regards to testing, I didn't know much about automated testing starting this task and I figured I'll be needing more time to fully get the hang of it and figure out whether unite testing or an integrated testing approach will be best so I stuck with manual testing.
+In regards to testing, I didn't know much about automated testing starting this task and I figured I'll be needing more time to fully get the hang of it and figure out whether unite testing or an integrated testing approach will be best for this project so I stuck with manual testing.
 
 ---
-
-==========================
 
 # Getting Started with Create React App
 

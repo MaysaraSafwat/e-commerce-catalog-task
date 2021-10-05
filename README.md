@@ -1,3 +1,30 @@
+## Problem
+
+Creating a catalog front foe an e-commerce store that allows user to list products
+by category to apply filters to the categorized products.
+
+---
+
+## Solution
+
+**This solution is a front-end solution thus using the following technologies:**
+
+- [React](https://reactjs.org/)
+- [Axios](https://axios-http.com/)
+- [Material-UI](https://mui.com/)
+
+I choose to use React.Js because of it's component-driven architecture that increase the reusability also the fact that it's intuitive, lightweight and simple makes it very suitable for this catalog.
+
+For the state management I used react Hooks, I didn't find a need to use Redux or Context API since these technologies are more suitable for larger apps.
+
+Also for the styling side of things I used a Material-UI and Vanilla CSS combo which made me achieve a polished, responsive and simple UI very easily.
+
+In regards to testing, I didn't know much about automated testing starting this task and I figured I'll be needing more time to fully get the hang of it and figure out whether unite testing or an integrated testing approach will be best so I stuck with manual testing.
+
+---
+
+==========================
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

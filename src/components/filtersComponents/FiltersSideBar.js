@@ -6,10 +6,9 @@ import RatingFilter from "./RatingFilter";
 
 
 export default function FiltersSideBar({onPriceRangeChange , onColorFilterChange,
-     products,onRatingSelect, onClearFilter,
+     products,onRatingSelect, handleClearPriceFilter,
      handleClearColorFilter, handleClearRatingFilter })
 {
-  
 
      return (
         <fieldset className="filters-sidebar">
@@ -17,7 +16,7 @@ export default function FiltersSideBar({onPriceRangeChange , onColorFilterChange
             <div className="filter-sideItem">
                 <PriceRange 
                 onPriceRangeChange={onPriceRangeChange}
-                onClearFilter ={onClearFilter }
+                handleClearPriceFilter ={handleClearPriceFilter}
                 />
             </div>
             <div className="filter-sideItem">

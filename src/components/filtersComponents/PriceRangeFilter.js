@@ -74,7 +74,7 @@ function valuetext(price) {
 
 
 
-export default function PriceRangeFilter({onPriceRangeChange,onClearFilter }) {
+export default function PriceRangeFilter({onPriceRangeChange, handleClearPriceFilter}) {
     const [price, setPrice] = React.useState([1, 50]);
   
     const handleChange = (event, newPrice) => {
@@ -82,11 +82,10 @@ export default function PriceRangeFilter({onPriceRangeChange,onClearFilter }) {
       onPriceRangeChange(price);
       
     };
-    const handleClick = ()=>{
-      let price = "price"
-      onClearFilter(price)
+    const clearFilter = ()=>{
+      handleClearPriceFilter()
     }
-    
+   
     return (
       <Box sx={{ width: 200 }}>
           <p>Price Range</p>
@@ -106,7 +105,7 @@ export default function PriceRangeFilter({onPriceRangeChange,onClearFilter }) {
           valueLabelDisplay="auto"
           getAriaValueText={valuetext}
         />
-          <Button onClick={handleClick}/>
+          <Button clearFilter={clearFilter}/>
         </Box>
     );
   }

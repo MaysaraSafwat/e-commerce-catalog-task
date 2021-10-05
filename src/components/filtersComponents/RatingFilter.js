@@ -8,7 +8,7 @@ export default function RatingFilter({ start, end, onChange, handleClearRatingFi
   const onRatingSelect = (value) => {
     onChange(value);
   };
-  const handleClick=()=>{
+  const clearFilter=()=>{
     handleClearRatingFilter()
   }
   return (
@@ -17,10 +17,10 @@ export default function RatingFilter({ start, end, onChange, handleClearRatingFi
       Select Rating 
     </div>
       {stars.map((i) => (
-        <Rating key={`raing-${i}`} rating={i} onRatingSelect={onRatingSelect} onClick={handleClick} />
+        <Rating key={`raing-${i}`} rating={i} onRatingSelect={onRatingSelect} />
       ))}
       
-      <Button onClick={handleClick}/>
+      <Button clearFilter={clearFilter}/>
     </>
   );
 }

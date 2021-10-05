@@ -39,7 +39,7 @@ export default function Home (){
     const handlePriceRangeChange = (arr) => {
       setAppliedFilter({
         ...appliedFilter,
-        price: `price_gte=${arr[0]}&price_lte${arr[1]}`,
+        price: `price_gte=${arr[0]}&price_lte=${arr[1]}`,
       });
     };
     
@@ -63,20 +63,20 @@ export default function Home (){
         rating: `rating=${num}`,
       });
     };
-    const handleClearPriceFilter =()=>{
-      let newFilter = { ...appliedFilter };
-      delete newFilter.price
-     setAppliedFilter(newFilter);
+    const handleClearPriceFilter=()=>{
+      let newFilters = { ...appliedFilter };
+     setAppliedFilter(newFilters);
     }
-    const handleClearColorFilter =()=>{
+   const handleClearColorFilter =()=>{
       let newFilter = { ...appliedFilter };
       delete newFilter.color
       setAppliedFilter(newFilter);
     }
+
     const handleClearRatingFilter =()=>{
-      let newFilter = { ...appliedFilter };
-      delete newFilter.rating
-      setAppliedFilter(newFilter);
+     let newFilter = { ...appliedFilter };
+       delete newFilter.rating
+       setAppliedFilter(newFilter);
     }
   
 return (
@@ -89,9 +89,9 @@ return (
                 onPriceRangeChange={handlePriceRangeChange}
                 onColorFilterChange={handleColorChange}
                 onRatingSelect={handleSelectedRating}
-                onClearFilter={handleClearPriceFilter }
-                handleClearColorFilter={handleClearColorFilter}
+                handleClearPriceFilter={handleClearPriceFilter}
                 handleClearRatingFilter={handleClearRatingFilter}
+                handleClearColorFilter={handleClearColorFilter}
                 />
                 <Products 
                 products={products}/>

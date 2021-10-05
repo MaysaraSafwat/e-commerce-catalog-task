@@ -4,8 +4,8 @@ import RatingComponent from "../Rating";
 
 export default function Product ({product}){
     return (
-        <div className="product">
-            <Card sx={{ maxWidth: 300 }}>
+    <div data-testid="product" className="product">
+        <Card sx={{ maxWidth: 300 }}>
            <CardActionArea>
              <CardMedia
           component="img"
@@ -13,17 +13,15 @@ export default function Product ({product}){
           image={product.image}
           alt="green iguana"
           />
-          <CardContent>
-          <Typography gutterBottom variant="h6" component="div">
+           <CardContent>
+              <Typography gutterBottom variant="h6" component="div">
             {product.name}
-          </Typography>
-          <RatingComponent rating={product.rating}/>
-          <p>Price: ${product.price}</p>
-           </CardContent>
-         </CardActionArea>
+               </Typography>
+               <RatingComponent rating={product.rating}/>
+               <p>Price: ${product.price}</p>
+            </CardContent>
+            </CardActionArea>
         </Card>
-            
-                 
     </div>
     )
 }

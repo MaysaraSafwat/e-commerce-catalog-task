@@ -41,7 +41,7 @@ export default function ColorFilter ({onColorFilterChange, products , handleClea
 
   const names = [];
   products.map(product => names.indexOf(product.color) === -1  ? names.push(product.color) : names)
-  console.log(names)
+  
 
   const classes = useStyles();
   const [selected, setSelected] = React.useState([]);
@@ -50,8 +50,7 @@ export default function ColorFilter ({onColorFilterChange, products , handleClea
 
   const handleChange = (event) => {
     const value = event.target.value;
-    console.log(value[value.length - 1])
-     if (value[value.length - 1] === "all") {
+    if (value[value.length - 1] === "all") {
       setSelected(selected.length === names.length ? [] : names);
       return;
      }
@@ -59,8 +58,8 @@ export default function ColorFilter ({onColorFilterChange, products , handleClea
     onColorFilterChange(value);
 
   };
-   const handleClick = ()=>{
-    handleClearColorFilter()
+   const clearFilter = ()=>{
+    handleClearColorFilter();
    }
   return (
     <FormControl className={classes.formControl}>
@@ -103,7 +102,7 @@ export default function ColorFilter ({onColorFilterChange, products , handleClea
         ))}
       </Select>
       
-      <Button onClick={handleClick}/>
+      <Button clearFilter={clearFilter}/>
       
     </FormControl>
   );
